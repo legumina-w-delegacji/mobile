@@ -27,13 +27,13 @@ const HomePage = ({ navigation }: any) => {
   ];
 
   return <View>
-    <ScrollView>
+    <ScrollView style={{ padding: 12 }}>
       {state.map((item, index) => (
         <View key={index} style={{ ...themeStyles.card, marginVertical: 5 }}>
           <TouchableOpacity key={index} style={{ flex: 1, flexDirection: 'row' }} onPress={() => {
             navigation.navigate('HelpDetails', { name: item });
           }}>
-            <View style={{ ...styles.dot }}></View>
+            <View style={{ ...themeStyles.dot }}></View>
             <View style={{ ...styles.item, width: '84%' }}>
               <Text style={{ fontSize: 18, fontWeight: 'bold' }} key={index}>{item}</Text>
               <View style={{ marginTop: 5, flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -60,13 +60,6 @@ const styles = StyleSheet.create({
   item: {
     fontSize: 18,
     marginLeft: 10
-  },
-  dot: {
-    width: 13,
-    height: 13,
-    backgroundColor: 'red',
-    borderRadius: 50,
-    marginTop: 3
   },
   itemInfo: {
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as Location from "expo-location";
-import MapView, {Marker} from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, View } from "react-native";
 
 const Map = () => {
@@ -13,7 +13,7 @@ const Map = () => {
 
     useEffect(() => {
         const getLocation = async () => {
-            let {status} = await Location.requestForegroundPermissionsAsync();
+            let { status } = await Location.requestForegroundPermissionsAsync();
             if (status !== "granted") {
                 console.log("Permission to access location was denied");
                 return;
@@ -37,13 +37,13 @@ const Map = () => {
         <View style={styles.container}>
             {initialRegion && (
                 <MapView style={styles.map}
-                        initialRegion={initialRegion}
-                        zoomTapEnabled={false}
-                        zoomControlEnabled={false}
-                        showsBuildings={false}
-                        pitchEnabled={false}
-                        pointerEvents="none"
-                        rotateEnabled={false}
+                    initialRegion={initialRegion}
+                    zoomTapEnabled={false}
+                    zoomControlEnabled={false}
+                    showsBuildings={false}
+                    pitchEnabled={false}
+                    pointerEvents="none"
+                    rotateEnabled={false}
                 >
                     {currentLocation && (
                         <Marker
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
+        borderRadius: 10,
     },
     map: {
         width: "100%",
