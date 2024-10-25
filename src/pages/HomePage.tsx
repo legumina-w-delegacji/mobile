@@ -1,40 +1,29 @@
 import React from "react";
-import { Button, FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View,  } from "react-native";
+import { ActivityIndicator, Button, FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View,  } from "react-native";
 import themeStyles from "../themes/themes";
 import DarkButton from "../components/buttons/DarkButton";
 import LightButton from "../components/buttons/LightButton";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../store/reducer";
+import { queryEvents } from "../store/actions";
+import { useQuery } from "@apollo/client";
+import { GET_EVENTS } from "../api/Queries";
 
 const HomePage = ({navigation}: any) => {
-    var state = [
-          "Data Structures",
-          "STL",
-          "C++",
-          "Java",
-          "Python",
-          "ReactJS",
-          "Angular",
-          "NodeJs",
-          "PHP",
-          "MongoDb",
-          "MySql",
-          "Android",
-          "iOS",
-          "Hadoop",
-          "Ajax",
-          "Ruby",
-          "Rails",
-          ".Net",
-          "Perl",
-        ];
+    const { loading, error, data } = useQuery<EventResponse>(GET_EVENTS);
+
+    if(loading) return <ActivityIndicator />;
+
+    if(!error || error) console.log(error); 
 
     return <View>
             <ScrollView style={styles.container}>
-                {state.map((item, index) => (
+                {data!.events.map((item, index) => (
                     <View key={index} style={{...themeStyles.card, marginVertical: 5}}>
                     <TouchableOpacity key={index} onPress={() => {
-                            navigation.navigate('HelpDetails', {name: item});
+                            navigation.navigate('HelpDetails', {id: item.uuid});
                         }}>
-                        <Text style={styles.item} key={index}>{item}</Text>
+                        <Text style={styles.item} key={item.uuid}>{item.name}</Text>
                     </TouchableOpacity>
                     </View>
                 ))}
