@@ -1,9 +1,10 @@
 import { Button } from "react-native";
 import { Text, View } from "react-native";
+import themeStyles from "../themes/themes";
 
 const HelpGiven = ({navigation}: any) => {
     return <View>
-        <View>            
+        <View style={themeStyles.card}>            
             <Text>Apel</Text>
             <Text>Uszczelnianie tamy Niedzica</Text>
         </View>

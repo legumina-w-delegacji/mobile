@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View,  } from "react-native";
+import themeStyles from "../themes/themes";
 
 const HomePage = ({navigation}: any) => {
     var state = [
@@ -24,16 +25,19 @@ const HomePage = ({navigation}: any) => {
           "Perl",
         ];
 
-    return <View style={styles.container}>
+    return <View>
             <ScrollView>
                 {state.map((item, index) => (
+                    <View key={index} style={{...themeStyles.card, marginVertical: 5}}>
                     <TouchableOpacity key={index} onPress={() => {
                             navigation.navigate('HelpDetails', {name: item});
                         }}>
                         <Text style={styles.item} key={index}>{item}</Text>
                     </TouchableOpacity>
+                    </View>
                 ))}
-                <Text>Jeśli jesteś osobą potrzebującą pmocy mozesz sgloscić problem</Text>
+                
+                <Text>Jeśli jesteś osobą potrzebabnouwdi8hawdeajw90ującą pmocy mozesz sgloscić problem</Text>
         <Button title="Potrzebuje pomocy" onPress={() => {
             console.log('Potrzebuje pomocy');
         }} />   
@@ -42,10 +46,6 @@ const HomePage = ({navigation}: any) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      paddingTop: 22,
-    },
     item: {
       padding: 10,
       fontSize: 18,

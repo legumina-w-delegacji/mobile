@@ -1,9 +1,10 @@
 import { Button, StyleSheet, Text, View } from "react-native";
+import themeStyles from "../themes/themes";
 
 const HelpDetails = ({route, navigation}: any) => {
 
     return <View>
-        <View>
+        <View style={themeStyles.card}>
             <Text>Apel</Text>
             <Text>Uszczelnianie tamy Niedzica</Text>
             <Text>Priorytet</Text>
