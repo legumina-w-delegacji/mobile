@@ -1,6 +1,8 @@
 import React from "react";
 import { Button, FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View,  } from "react-native";
 import themeStyles from "../themes/themes";
+import DarkButton from "../components/buttons/DarkButton";
+import LightButton from "../components/buttons/LightButton";
 
 const HomePage = ({navigation}: any) => {
     var state = [
@@ -26,7 +28,7 @@ const HomePage = ({navigation}: any) => {
         ];
 
     return <View>
-            <ScrollView>
+            <ScrollView style={styles.container}>
                 {state.map((item, index) => (
                     <View key={index} style={{...themeStyles.card, marginVertical: 5}}>
                     <TouchableOpacity key={index} onPress={() => {
@@ -38,16 +40,18 @@ const HomePage = ({navigation}: any) => {
                 ))}
                 
                 <Text>Jeśli jesteś osobą potrzebabnouwdi8hawdeajw90ującą pmocy mozesz sgloscić problem</Text>
-        <Button title="Potrzebuje pomocy" onPress={() => {
-            console.log('Potrzebuje pomocy');
-        }} />   
-        </ScrollView>
+                <LightButton title="Potrzebuje pomocy" onPress={() => {
+                    console.log('Potrzebuje pomocy');
+                }} />   
+            </ScrollView>
         </View>
 };
 
 const styles = StyleSheet.create({
+    container: {
+      paddingHorizontal: 18,
+    },
     item: {
-      padding: 10,
       fontSize: 18,
       height: 44,
     },
