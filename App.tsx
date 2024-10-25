@@ -7,8 +7,10 @@ import Navigator from './src/navigation/Navigator';
 
 export default function App() {
   return (
+    <SafeAreaView style={{flex: 1}}>
       <Provider store={store}>
         <Navigator />
       </Provider>
+    </SafeAreaView>
   );
 }

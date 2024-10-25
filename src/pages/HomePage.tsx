@@ -1,7 +1,7 @@
 import React from "react";
-import { FlatList, ScrollView, StyleSheet, Text, View,  } from "react-native";
+import { Button, FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View,  } from "react-native";
 
-const HomePage = () => {
+const HomePage = ({navigation}: any) => {
     var state = [
           "Data Structures",
           "STL",
@@ -24,15 +24,21 @@ const HomePage = () => {
           "Perl",
         ];
 
-    return (
-        <View style={styles.container}>
+    return <View style={styles.container}>
             <ScrollView>
                 {state.map((item, index) => (
-                    <Text style={styles.item} key={index}>{item}</Text>
+                    <TouchableOpacity key={index} onPress={() => {
+                            navigation.navigate('HelpDetails', {name: item});
+                        }}>
+                        <Text style={styles.item} key={index}>{item}</Text>
+                    </TouchableOpacity>
                 ))}
+                <Text>Jeśli jesteś osobą potrzebującą pmocy mozesz sgloscić problem</Text>
+        <Button title="Potrzebuje pomocy" onPress={() => {
+            console.log('Potrzebuje pomocy');
+        }} />   
         </ScrollView>
         </View>
-    );
 };
 
 const styles = StyleSheet.create({
