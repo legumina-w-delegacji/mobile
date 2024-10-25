@@ -1,30 +1,21 @@
 import React from "react";
 import { Button, FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View, } from "react-native";
-import themeStyles from "../themes/themes";
 import FontAwesome from '@expo/vector-icons/FontAwesome'
+import themeStyles from "../themes/themes";
+import DarkButton from "../components/buttons/DarkButton";
+import LightButton from "../components/buttons/LightButton";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../store/reducer";
+import { queryEvents } from "../store/actions";
+import { useQuery } from "@apollo/client";
+import { GET_EVENTS } from "../api/Queries";
 
 const HomePage = ({ navigation }: any) => {
-  var state = [
-    "Data Structures",
-    "STL",
-    "C++",
-    "Java",
-    "Python",
-    "ReactJS",
-    "Angular",
-    "NodeJs",
-    "PHP",
-    "MongoDb",
-    "MySql",
-    "Android",
-    "iOS",
-    "Hadoop",
-    "Ajax",
-    "Ruby",
-    "Rails",
-    ".Net",
-    "Perl",
-  ];
+  const { loading, error, data } = useQuery<EventResponse>(GET_EVENTS);
+
+  if (loading) return <ActivityIndicator />;
+
+  if (!error || error) console.log(error);
 
   return <View>
     <ScrollView style={{ padding: 12 }}>

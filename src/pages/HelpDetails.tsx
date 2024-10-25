@@ -1,10 +1,21 @@
-import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, Button, ScrollView, StyleSheet, Text, View } from "react-native";
 import themeStyles from "../themes/themes";
 import Map from "../components/map/Map";
 import DarkButton from "../components/buttons/DarkButton";
 import { gray } from "../themes/colors";
+import { useQuery } from "@apollo/client";
+import { GET_EVENT_BY_ID } from "../api/Queries";
 
 const HelpDetails = ({ route, navigation }: any) => {
+    const { loading, error, data } = useQuery<EventDetailsResponse>(GET_EVENT_BY_ID, {
+        variables: { uuid: route.params.id },
+    });
+
+    if (loading) return <ActivityIndicator />;
+
+    if (!data || error) console.log(error);
+
+    console.log(`fetching${data?.event.name}`);
 
     return <ScrollView style={styles.container}>
         <View style={themeStyles.card}>
