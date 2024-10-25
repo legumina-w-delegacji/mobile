@@ -6,7 +6,9 @@ const Stack = createStackNavigator();
 const HomeStackNavigator = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomePage} />
+            <Stack.Screen name="Home" component={HomePage} options={{
+                title: 'Pomoc Humanitarna'
+            }}/>
         </Stack.Navigator>
     );
 }

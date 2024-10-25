@@ -7,10 +7,8 @@ import Navigator from './src/navigation/Navigator';
 
 export default function App() {
   return (
-    <SafeAreaView>
       <Provider store={store}>
         <Navigator />
       </Provider>
-    </SafeAreaView>
   );
 }
