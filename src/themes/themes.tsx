@@ -4,7 +4,7 @@ import { darkWhiteColor } from "./colors";
 const themeStyles = StyleSheet.create({
     card: {
         padding: 20,
-        margin: 20,
+        marginVertical: 20,
         borderRadius: 10,
         backgroundColor: darkWhiteColor,
         shadowOffset: { width: 0, height: 2 },
