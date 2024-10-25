@@ -15,13 +15,13 @@ const HomeStackNavigator = () => {
                 headerStyle: {
                     backgroundColor: darkWhiteColor,
                 },
-            }}/>
+            }} />
             <Stack.Screen name="HelpDetails" component={HelpDetails} options={{
                 title: 'Pomoc Humanitarna',
                 headerStyle: {
                     backgroundColor: darkWhiteColor,
                 },
-            }}/>
+            }} />
             <Stack.Screen name="HelpGiven" component={HelpGiven} options={{
                 title: 'Pomagam',
                 headerStyle: {

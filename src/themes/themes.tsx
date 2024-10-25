@@ -11,6 +11,7 @@ const themeStyles = StyleSheet.create({
         shadowOpacity: 0.26,
         shadowRadius: 8,
         elevation: 5,
+        flex: 1,
     }
 });
 
