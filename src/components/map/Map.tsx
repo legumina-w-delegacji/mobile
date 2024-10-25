@@ -37,11 +37,13 @@ const Map = () => {
         <View style={styles.container}>
             {initialRegion && (
                 <MapView style={styles.map}
-                         initialRegion={initialRegion}
-                         zoomTapEnabled
-                         zoomControlEnabled
-                         onRegionChangeComplete={onRegionChange}
-                         showsBuildings={false}
+                        initialRegion={initialRegion}
+                        zoomTapEnabled={false}
+                        zoomControlEnabled={false}
+                        showsBuildings={false}
+                        pitchEnabled={false}
+                        pointerEvents="none"
+                        rotateEnabled={false}
                 >
                     {currentLocation && (
                         <Marker

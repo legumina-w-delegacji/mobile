@@ -1,5 +1,6 @@
 import { Button, StyleSheet, Text, View } from "react-native";
 import themeStyles from "../themes/themes";
+import Map from "../components/map/Map";
 
 const HelpDetails = ({route, navigation}: any) => {
 
@@ -16,6 +17,10 @@ const HelpDetails = ({route, navigation}: any) => {
             <Text>Bardzo dlugi opis.....</Text>
             <Text>Miejsce</Text>
             <Text>Wał jakiśtam w pierdykowie dolnym</Text>
+            <Text>Miejsce</Text>
+            <View style={{width: '100%', height: '50%'}}>
+                <Map />
+            </View>
         </View>
     
 
