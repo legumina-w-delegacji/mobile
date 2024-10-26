@@ -18,16 +18,14 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "your.app.bundle.identifier",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "bundleIdentifier": "your.app.bundle.identifier"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "your.app.package.name",
-      "googleServicesFile": "./google-services.json"
+      "package": "your.app.package.name"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -39,7 +37,15 @@
           "ios": {
             "useFrameworks": "static"
           }
-        }
+        },
+        [
+          "expo-notifications",
+          {
+            "icon": "./assets/icon.png",
+            "color": "#ffffff",
+            "defaultChannel": "default"
+          }
+        ]
     ]
   }
 }
