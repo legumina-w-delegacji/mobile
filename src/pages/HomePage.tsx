@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, ScrollView, StyleSheet, Text, TouchableOpacity, View, ActivityIndicator } from "react-native";
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import themeStyles from "../themes/themes";
@@ -7,12 +7,32 @@ import { GET_EVENTS } from "../api/Queries";
 import LightButton from "../components/buttons/LightButton";
 import { gray, green, blue, yellow, orange, red } from '../themes/colors';
 
+import * as Notifications from 'expo-notifications';
+import { calculateDistance, calculateTime } from "../utils/PointCalculator";
+import * as Location from "expo-location";
+
 const HomePage = ({ navigation }: any) => {
-  const { loading, error, data } = useQuery<EventResponse>(GET_EVENTS);
+  const {loading, error, data } = useQuery<EventResponse>(GET_EVENTS);
+  const [currentLocation, setCurrentLocation]: any = useState({ latitude: 0, longitude: 0 });
 
   if (loading) return <ActivityIndicator style={{ marginTop: 8 }} />;
 
-  if (!data || error) console.log(error);
+  if (error) return <></>
+
+    const getLocation = async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== "granted") {
+            console.log("Permission to access location was denied");
+            return;
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        setCurrentLocation(location.coords);
+    };
+
+    if(currentLocation.latitude === 0 && currentLocation.longitude === 0)
+        getLocation();
+
 
   let dotsColorsArr = [
     green,
@@ -80,7 +100,24 @@ const styles = StyleSheet.create({
   },
   itemInfo: {
 
+  },
+  miniText: {
+    fontSize: 12,
+    color: 'gray',
+    textAlign: 'center',
+    marginVertical: 10
   }
 });
+
+async function schedulePushNotification() {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: 'Ktoś w pobliżu potrzebuje pomocy!',
+      body: `Zgłoszenie: Pomoc przy powodzi`,
+      badge: 0
+    },
+    trigger: { seconds: 2 },
+  });
+}
 
 export default HomePage;

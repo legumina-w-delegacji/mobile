@@ -11,17 +11,40 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "extra": {
+      "eas": {
+        "projectId": "50134c1f-928f-4845-95b2-e57ec06d1e8b"
+      }
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "your.app.bundle.identifier"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "your.app.package.name"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        },
+        [
+          "expo-notifications",
+          {
+            "icon": "./assets/icon.png",
+            "color": "#ffffff",
+            "defaultChannel": "default"
+          }
+        ]
+    ]
   }
 }

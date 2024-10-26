@@ -23,4 +23,11 @@ const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: numbe
     return R * c;
 };
 
-export default {calculateDistance, calculateTotalDistanceLeft};
+const calculateTime = (timeAgo: string): string => {
+    const timeAgoDate = new Date(timeAgo).getTime();
+    const timeDifference = Date.now() - timeAgoDate;
+    const hoursDifference = Math.floor(timeDifference / (1000 * 60 * 60));
+    return hoursDifference.toString();
+}
+
+export {calculateDistance, calculateTotalDistanceLeft, calculateTime};

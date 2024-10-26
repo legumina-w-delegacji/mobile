@@ -17,6 +17,7 @@ const Stack = createStackNavigator();
 
 const headerStyle = {
     backgroundColor: darkWhiteColor,
+    shadowColor: 'transparent',
     height: 91,
 }
 
@@ -28,6 +29,7 @@ const HomeStackNavigator = () => {
                 headerStyle: headerStyle,
                 headerTitleStyle: {
                     padding: 0,
+                    height: 20,
                     fontSize: 20,
                     fontWeight: 'bold',
                 },

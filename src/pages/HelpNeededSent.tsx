@@ -25,4 +25,10 @@ const HelpNeededSent = ({ navigation }: any) => {
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 18,
+},
+});
+
 export { HelpNeededSent }
