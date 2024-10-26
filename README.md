@@ -1,6 +1,6 @@
 # Pomoc na wyciągnięcie ręki
 
-![Project Logo](.readme.assets/pomoc-logo.png)
+![Project Logo](.readme.assets/pomoc-logo.png "Logo")
 
 ## Ogólny Opis
 
