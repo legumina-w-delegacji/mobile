@@ -10,7 +10,7 @@ interface Event {
     uuid: string;
     name: string;
     description: string;
-    severity: string;
+    severity: number;
     lat: number;
     lng: number;
     createdAt: string;

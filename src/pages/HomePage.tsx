@@ -10,6 +10,8 @@ import { gray, green, blue, yellow, orange, red } from '../themes/colors';
 import * as Notifications from 'expo-notifications';
 import { calculateDistance, calculateTime } from "../utils/PointCalculator";
 import * as Location from "expo-location";
+import { getNotification } from "../api/Firestore";
+
 
 const HomePage = ({ navigation }: any) => {
   const { loading, error, data } = useQuery<EventResponse>(GET_EVENTS);
@@ -18,6 +20,7 @@ const HomePage = ({ navigation }: any) => {
   if (loading) return <ActivityIndicator style={{ marginTop: 8 }} />;
 
   if (error) return <></>
+  getNotification();
 
   const getLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -108,16 +111,5 @@ const styles = StyleSheet.create({
     marginVertical: 10
   }
 });
-
-async function schedulePushNotification() {
-  await Notifications.scheduleNotificationAsync({
-    content: {
-      title: 'Ktoś w pobliżu potrzebuje pomocy!',
-      body: `Zgłoszenie: Pomoc przy powodzi`,
-      badge: 0
-    },
-    trigger: { seconds: 2 },
-  });
-}
 
 export default HomePage;

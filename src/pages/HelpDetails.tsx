@@ -5,6 +5,7 @@ import DarkButton from "../components/buttons/DarkButton";
 import { gray, green, blue, yellow, orange, red } from '../themes/colors';
 import { useQuery } from "@apollo/client";
 import { GET_EVENT_BY_ID } from "../api/Queries";
+import { addNotif } from "../api/Firestore";
 
 const HelpDetails = ({ route, navigation }: any) => {
     const { loading, error, data } = useQuery<EventDetailsResponse>(GET_EVENT_BY_ID, {
@@ -52,7 +53,8 @@ const HelpDetails = ({ route, navigation }: any) => {
 
             <View style={{ paddingBottom: 18 }}>
                 <DarkButton title="Chcę pomóc" onPress={() => {
-                    console.log('Chcę pomóc');
+                    addNotif('Pomoc nadciąga', 'Jestem w drodze');
+
                     navigation.navigate('HelpGiven');
                 }} />
             </View>

@@ -6,6 +6,7 @@ import { gray } from "../themes/colors";
 import { useQuery } from "@apollo/client";
 import { GET_EVENT_BY_ID } from "../api/Queries";
 import LightButton from "../components/buttons/LightButton";
+import { addNotif, getNotification } from "../api/Firestore";
 
 const HelpGiven = ({ navigation }: any) => {
     return <ScrollView style={styles.container}>
@@ -29,16 +30,14 @@ const HelpGiven = ({ navigation }: any) => {
             </View>
         </View>
 
-        <View style={{ paddingBottom: 18, marginHorizontal: 20 }}>
-            <DarkButton title="Chcę pomóc" onPress={() => {
-                console.log('Chcę pomóc');
-                navigation.navigate('HelpSent');
-            }} />
-            <View style={{ height: 5 }} />
-            <LightButton title="Wróć" onPress={() => {
-                console.log('Wroc');
-            }} />
-        </View>
+        <DarkButton title="Chcę pomóc" onPress={() => {
+            addNotif('a', 'b');
+            navigation.navigate('HelpSent');
+        }} />
+        <View style={{ height: 5 }} />
+        <LightButton title="Wróć" onPress={() => {
+            navigation.goBack();
+        }} />
 
     </ScrollView>
 };

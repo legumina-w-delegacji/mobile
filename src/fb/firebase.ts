@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getMessaging } from 'firebase/messaging';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAEpUM63X2Z6EmKBoM8tXWYKhseH1rD9nE",
@@ -12,4 +13,5 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-export const messaging = getMessaging(app);
+// export const messaging = getMessaging(app);
+export const database = getFirestore(app);
