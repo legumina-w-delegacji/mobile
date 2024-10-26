@@ -19,8 +19,12 @@ const HomePage = ({ navigation }: any) => {
       {data!.events.map((item, index) => (
         <View key={index} style={{ ...themeStyles.card, marginVertical: 5 }}>
           <TouchableOpacity key={index} style={{ flex: 1, flexDirection: 'row' }} onPress={() => {
+
             // navigation.navigate('HelpDetails', { name: item });
             schedulePushNotification();
+
+            navigation.navigate('HelpDetails', { id: item.uuid });
+
           }}>
             <View style={{ ...themeStyles.dot }}></View>
             <View style={{ ...styles.item, width: '84%' }}>

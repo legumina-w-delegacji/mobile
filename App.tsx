@@ -4,12 +4,14 @@ import Navigator from './src/navigation/Navigator';
 import { darkWhiteColor } from './src/themes/colors';
 import { ApolloProvider } from '@apollo/client';
 
+
 import { client } from './src/api/ApolloClient';
 import { onMessage } from 'firebase/messaging';
 import { messaging } from './src/fb/firebase';
 import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device';
 import Constants from 'expo-constants';
+
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -20,6 +22,7 @@ Notifications.setNotificationHandler({
 });
 
 export default function App() {
+
 
   const [expoPushToken, setExpoPushToken] = useState('');
   const [channels, setChannels] = useState<Notifications.NotificationChannel[]>([]);
@@ -49,6 +52,7 @@ export default function App() {
     };
   }, []);
   
+
   return (
     <ApolloProvider client={client}>
       <SafeAreaView style={{flex: 1, backgroundColor: darkWhiteColor}}>
