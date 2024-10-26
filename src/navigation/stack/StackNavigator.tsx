@@ -4,6 +4,7 @@ import HelpDetails from "../../pages/HelpDetails";
 import HelpGiven from "../../pages/HelpGiven";
 import HelpSent from "../../pages/HelpSent";
 import { darkWhiteColor } from "../../themes/colors";
+import { HelpNeeded } from "../../pages/HelpNeeded";
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,12 @@ const HomeStackNavigator = () => {
             }} />
             <Stack.Screen name="HelpSent" component={HelpSent} options={{
                 title: 'Pomagam',
+                headerStyle: {
+                    backgroundColor: darkWhiteColor,
+                },
+            }} />
+            <Stack.Screen name="HelpNeeded" component={HelpNeeded} options={{
+                title: 'Potrzebuję Pomocy',
                 headerStyle: {
                     backgroundColor: darkWhiteColor,
                 },
