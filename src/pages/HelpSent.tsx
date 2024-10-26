@@ -2,18 +2,17 @@ import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 import LightButton from "../components/buttons/LightButton";
 import themeStyles from "../themes/themes";
 
-const HelpSent = ({navigation}: any) => {
+const HelpSent = ({ navigation }: any) => {
     return (<ScrollView style={styles.container}>
-           <View style={themeStyles.card}>
+        <View style={themeStyles.card}>
             <Text>
-                Twoje zgłoszenie zostało wysłane do koordynatora. Dziękujemy za pomoc! 
-                Jesli chcesz wrócić do strony głównej kliknij przycisk poniżej. 
+                Twoje zgłoszenie chęci pomocy zostało przesłane do zgłaszającego. Czekaj na informację od osoby w celu ustalenia szczegółów. Jeśli zgłoszenie, którego dotyczy Twoja deklaracja ma najwyższy priorytet możesz od razu udać się na miejsce wymienione w zgłoszenie
             </Text>
-           </View>
-           <LightButton title="Wróć" onPress={() => {
-               navigation.goBack();
-           }} />
-        </ScrollView>
+        </View>
+        <LightButton title="Wróć" onPress={() => {
+            navigation.goBack();
+        }} />
+    </ScrollView>
     );
 };
 

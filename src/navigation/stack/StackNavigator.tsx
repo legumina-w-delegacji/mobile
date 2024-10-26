@@ -27,7 +27,7 @@ const HomeStackNavigator = () => {
                     fontSize: 20,
                     fontWeight: 'bold',
                 },
-                headerBackTitle: '',
+                // headerBackTitle: '',
             }} />
             <Stack.Screen name="HelpDetails" component={HelpDetails} options={{
                 title: 'Pomoc Humanitarna',
@@ -37,7 +37,7 @@ const HomeStackNavigator = () => {
                     fontSize: 20,
                     fontWeight: 'bold',
                 },
-                headerLeft: () => <FontAwesome name="angle-left" style={{ marginLeft: 24 }} size={24} color="black" />,
+                // headerLeft: () => <FontAwesome name="angle-left" style={{ marginLeft: 24 }} size={24} color="black" />,
             }} />
             <Stack.Screen name="HelpGiven" component={HelpGiven} options={{
                 title: 'Pomagam',
@@ -47,7 +47,7 @@ const HomeStackNavigator = () => {
                     fontSize: 20,
                     fontWeight: 'bold',
                 },
-                headerLeft: () => <FontAwesome name="angle-left" style={{ marginLeft: 24 }} size={24} color="black" />,
+                // headerLeft: () => <FontAwesome name="angle-left" style={{ marginLeft: 24 }} size={24} color="black" />,
             }} />
             <Stack.Screen name="HelpSent" component={HelpSent} options={{
                 title: 'Pomagam',
@@ -57,7 +57,7 @@ const HomeStackNavigator = () => {
                     fontSize: 20,
                     fontWeight: 'bold',
                 },
-                headerLeft: () => <FontAwesome name="angle-left" style={{ marginLeft: 24 }} size={24} color="black" />,
+                // headerLeft: () => <FontAwesome name="angle-left" style={{ marginLeft: 24 }} size={24} color="black" />,
             }} />
             <Stack.Screen name="HelpNeeded" component={HelpNeeded} options={{
                 title: 'Potrzebuję Pomocy',
