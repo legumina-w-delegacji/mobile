@@ -12,26 +12,26 @@ import { calculateDistance, calculateTime } from "../utils/PointCalculator";
 import * as Location from "expo-location";
 
 const HomePage = ({ navigation }: any) => {
-  const {loading, error, data } = useQuery<EventResponse>(GET_EVENTS);
+  const { loading, error, data } = useQuery<EventResponse>(GET_EVENTS);
   const [currentLocation, setCurrentLocation]: any = useState({ latitude: 0, longitude: 0 });
 
   if (loading) return <ActivityIndicator style={{ marginTop: 8 }} />;
 
   if (error) return <></>
 
-    const getLocation = async () => {
-        let { status } = await Location.requestForegroundPermissionsAsync();
-        if (status !== "granted") {
-            console.log("Permission to access location was denied");
-            return;
-        }
+  const getLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      console.log("Permission to access location was denied");
+      return;
+    }
 
-        let location = await Location.getCurrentPositionAsync({});
-        setCurrentLocation(location.coords);
-    };
+    let location = await Location.getCurrentPositionAsync({});
+    setCurrentLocation(location.coords);
+  };
 
-    if(currentLocation.latitude === 0 && currentLocation.longitude === 0)
-        getLocation();
+  if (currentLocation.latitude === 0 && currentLocation.longitude === 0)
+    getLocation();
 
 
   let dotsColorsArr = [
