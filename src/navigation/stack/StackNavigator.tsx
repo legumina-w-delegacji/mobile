@@ -12,6 +12,8 @@ import { HelpNeededSent } from "../../pages/HelpNeededSent";
 import { MyHelpRequests } from "../../pages/MyHelpRequests";
 import { MyHelpRequestDetails } from "../../pages/MyHelpRequestDetails";
 import { MyHelpDetailsPending } from "../../pages/MyHelpDetailsPending";
+import { MyHelpDetailsRejected } from "../../pages/MyHelpDetailsRejected";
+import { ContactForm } from "../../pages/ContactForm";
 
 const Stack = createStackNavigator();
 
@@ -124,6 +126,32 @@ const HomeStackNavigator = () => {
                 </TouchableOpacity>,
             })} />
             <Stack.Screen name="MyHelpDetailsPending" component={MyHelpDetailsPending} options={({ navigation, route }) => ({
+                title: 'Informacje o zgłoszeniu',
+                headerStyle: headerStyle,
+                headerTitleStyle: {
+                    padding: 0,
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                },
+                headerTitleAlign: 'center',
+                headerLeft: () => <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <FontAwesome name="angle-left" style={{ marginLeft: 24 }} size={24} color="black" />
+                </TouchableOpacity>,
+            })} />
+            <Stack.Screen name="MyHelpDetailsRejected" component={MyHelpDetailsRejected} options={({ navigation, route }) => ({
+                title: 'Informacje o zgłoszeniu',
+                headerStyle: headerStyle,
+                headerTitleStyle: {
+                    padding: 0,
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                },
+                headerTitleAlign: 'center',
+                headerLeft: () => <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <FontAwesome name="angle-left" style={{ marginLeft: 24 }} size={24} color="black" />
+                </TouchableOpacity>,
+            })} />
+            <Stack.Screen name="ContactForm" component={ContactForm} options={({ navigation, route }) => ({
                 title: 'Informacje o zgłoszeniu',
                 headerStyle: headerStyle,
                 headerTitleStyle: {

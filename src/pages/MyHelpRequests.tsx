@@ -76,7 +76,7 @@ const MyHelpRequests = ({ navigation }: any) => {
         {data!.events.slice(0, 3).map((item, index) => (
           <View key={index} style={{ ...themeStyles.card, marginVertical: 5, marginHorizontal: 20 }}>
             <TouchableOpacity key={index} style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }} onPress={() => {
-              navigation.navigate('MyHelpRequestDetails', { id: item.uuid });
+              navigation.navigate('MyHelpDetailsRejected', { id: item.uuid });
             }}>
               <View style={{ ...themeStyles.dot, backgroundColor: gray }}></View>
               <View style={{ ...styles.item, width: '80%' }}>

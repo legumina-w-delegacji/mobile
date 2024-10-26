@@ -5,6 +5,7 @@ import DarkButton from "../components/buttons/DarkButton";
 import { gray } from "../themes/colors";
 import { useQuery } from "@apollo/client";
 import { GET_EVENT_BY_ID } from "../api/Queries";
+import LightButton from "../components/buttons/LightButton";
 
 const MyHelpDetailsPending = ({ route, navigation }: any) => {
   const { loading, error, data } = useQuery<EventDetailsResponse>(GET_EVENT_BY_ID, {
@@ -26,8 +27,8 @@ const MyHelpDetailsPending = ({ route, navigation }: any) => {
       <Text style={{ ...themeStyles.detailItemValue }}>Uszczelnianie tamy Niedzica</Text>
       <Text style={{ marginTop: 32, ...themeStyles.detailsItemLabel }}>Priorytet</Text>
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', padding: 5 }}>
-        <View style={{ ...themeStyles.dot, width: 16, height: 16, marginTop: 5 }}></View>
-        <Text style={{ ...themeStyles.detailItemValue, marginLeft: 5 }}>Najwyzszy</Text>
+        <View style={{ ...themeStyles.dot, width: 16, height: 16, marginTop: 5, backgroundColor: gray }}></View>
+        <Text style={{ ...themeStyles.detailItemValue, marginLeft: 5 }}>Oczekuję na weryfikację</Text>
       </View>
       <Text style={{ ...themeStyles.detailsItemLabel, marginTop: 32 }}>Opis Zgłoszenia</Text>
       <Text style={{ ...themeStyles.detailItemValue }}>Tama w Niedzicy wymaga uszczelnienia oraz zabezpieczenia przed prawdopodobnym przelaniem się przez nią wody.
@@ -41,8 +42,8 @@ const MyHelpDetailsPending = ({ route, navigation }: any) => {
     </View>
 
     <View style={{ marginHorizontal: 20, paddingBottom: 18 }}>
-      <DarkButton title="Otrzymałem Pomoc" onPress={() => {
-        console.log('Otrzymałem Pomoc');
+      <LightButton title="Wróć" onPress={() => {
+        navigation.goBack()
       }} />
     </View>
   </ScrollView>

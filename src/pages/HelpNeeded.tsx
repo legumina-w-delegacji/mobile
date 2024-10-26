@@ -14,12 +14,12 @@ const HelpNeeded = ({ navigation }: any) => {
     const [region, setRegion]: any = useState();
     const [initialLocationTrigger, setInitialLocationTrigger] = useState(false);
 
-    
+
     useEffect(() => {
         if (data) navigation.navigate('HelpNeededSent')
         console.log(data);
     }, [data]);
-    
+
     const handleInitialLocationTrigger = () => {
         setInitialLocationTrigger(!initialLocationTrigger);
     };
@@ -39,13 +39,13 @@ const HelpNeeded = ({ navigation }: any) => {
         <View style={{ ...themeStyles.card, marginHorizontal: 20 }}>
             <Text style={styles.labelArea}>Opis zgłoszenia</Text>
             <View style={styles.inputArea}>
-                <TextInput defaultValue={description} onChangeText={val => setDescription(val)} placeholder="Opis zgłoszenia..." multiline={true}/>
+                <TextInput defaultValue={description} onChangeText={val => setDescription(val)} placeholder="Opis zgłoszenia..." multiline={true} />
             </View>
             <View style={{ height: 15 }} />
-            <Text style={styles.labelArea}>Opis zgłoszenia</Text>
+            <Text style={styles.labelArea}>Miejsce</Text>
             <View style={styles.mapInputArea}>
                 <View style={styles.mapSearchContainer}>
-                    <TextInput style={styles.searchInput} placeholder="Adres..." textBreakStrategy="highQuality"/>
+                    <TextInput style={styles.searchInput} placeholder="Adres..." textBreakStrategy="highQuality" />
                     <TouchableOpacity onPress={() => handleInitialLocationTrigger()}>
                         <FontAwesome6 name="location-crosshairs" size={20} color="black" />
                     </TouchableOpacity>
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     labelArea: {
-        fontSize: 18,
+        fontSize: 13,
         marginBottom: 5,
         color: 'grey'
     },
