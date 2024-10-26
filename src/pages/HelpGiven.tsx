@@ -9,11 +9,11 @@ import LightButton from "../components/buttons/LightButton";
 
 const HelpGiven = ({ navigation }: any) => {
     return <ScrollView style={styles.container}>
-        <View style={themeStyles.card}>
+        <View style={{ ...themeStyles.card, marginHorizontal: 20 }}>
             <Text style={{ ...themeStyles.detailsItemLabel }}>Apel</Text>
             <Text style={{ ...themeStyles.detailItemValue }}>Uszczelnianie tamy Niedzica</Text>
             <Text style={{ marginTop: 32, ...themeStyles.detailsItemLabel }}>Priorytet</Text>
-            <View style={{ ...styles.row, padding: 5 }}>
+            <View style={{ padding: 5 }}>
                 <View style={{ ...themeStyles.dot, width: 16, height: 16 }}></View>
                 <Text style={{ ...themeStyles.detailItemValue, marginLeft: 5 }}>Najwyzszy</Text>
             </View>
@@ -29,21 +29,23 @@ const HelpGiven = ({ navigation }: any) => {
             </View>
         </View>
 
-        <DarkButton title="Chcę pomóc" onPress={() => {
-            console.log('Chcę pomóc');
-            navigation.navigate('HelpSent');
-        }} />
-        <View style={{ height: 5 }} />
-        <LightButton title="Wróć" onPress={() => {
-            console.log('Wroc');
-        }} />
+        <View style={{ paddingBottom: 18, marginHorizontal: 20 }}>
+            <DarkButton title="Chcę pomóc" onPress={() => {
+                console.log('Chcę pomóc');
+                navigation.navigate('HelpSent');
+            }} />
+            <View style={{ height: 5 }} />
+            <LightButton title="Wróć" onPress={() => {
+                console.log('Wroc');
+            }} />
+        </View>
 
     </ScrollView>
 };
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal: 18,
+
     }
 });
 

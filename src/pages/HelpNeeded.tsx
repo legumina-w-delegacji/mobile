@@ -31,7 +31,7 @@ const HelpNeeded = ({ navigation }: any) => {
     if (data) navigation.navigate('HelpNeededSent')
 
     return <ScrollView style={styles.container}>
-        <View style={themeStyles.card}>
+        <View style={{ ...themeStyles.card, marginHorizontal: 20 }}>
             <Text style={styles.labelArea}>Opis zgłoszenia</Text>
             <View style={styles.inputArea}>
                 <TextInput defaultValue={description} onChangeText={val => setDescription(val)} placeholder="Opis zgłoszenia..." />
@@ -50,20 +50,21 @@ const HelpNeeded = ({ navigation }: any) => {
             </View>
 
         </View>
-        <DarkButton title="Wyślij zgłoszenie" onPress={() => {
-            handleCreateEvent()
-        }} />
-        <View style={{ height: 5 }} />
-        <LightButton title="Wróć" onPress={() => {
-            console.log('Wroc');
-        }} />
+        <View style={{ paddingBottom: 18, marginHorizontal: 20 }}>
+            <DarkButton title="Wyślij zgłoszenie" onPress={() => {
+                handleCreateEvent()
+            }} />
+            <View style={{ height: 5 }} />
+            <LightButton title="Wróć" onPress={() => {
+                navigation.goBack()
+            }} />
+        </View>
     </ScrollView>
 };
 
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal: 18,
     },
     inputArea: {
         height: 120,

@@ -5,9 +5,10 @@ const themeStyles = StyleSheet.create({
     card: {
         padding: 20,
         marginVertical: 20,
+        marginHorizontal: 0,
         borderRadius: 10,
         backgroundColor: darkWhiteColor,
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: { width: 2, height: 2 },
         shadowOpacity: 0.26,
         shadowRadius: 8,
         elevation: 5,
@@ -18,7 +19,7 @@ const themeStyles = StyleSheet.create({
         height: 13,
         backgroundColor: 'red',
         borderRadius: 50,
-        marginTop: 3
+        // marginTop: 3
     },
     detailsItemLabel: {
         fontSize: 13,

@@ -24,6 +24,7 @@ query Event($uuid: String!) {
     lng
     createdAt
     updatedAt
+    severity
   }
 }`;
 
