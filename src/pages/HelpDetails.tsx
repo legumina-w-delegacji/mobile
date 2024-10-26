@@ -33,7 +33,7 @@ const HelpDetails = ({ route, navigation }: any) => {
             <Text style={{ ...themeStyles.detailsItemLabel, marginTop: 32 }}>Miejsce</Text>
             <Text style={{ ...themeStyles.detailItemValue }}>ul. Programistyczna 32, Toruń</Text>
             <View style={{ width: '100%', height: 200, marginTop: 4, borderRadius: 10, borderWidth: 1, borderColor: 'black', overflow: 'hidden' }}>
-                <Map />
+                <Map interactivityEnabled={false} />
             </View>
         </View>
 

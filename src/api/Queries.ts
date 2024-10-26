@@ -27,4 +27,22 @@ query Event($uuid: String!) {
   }
 }`;
 
+const CREATE_EVENT = gql`
+mutation CreateEvent($description: String!, $lat: Float!, $lng: Float!) {
+  eventCreate(input: {
+    description: $description
+    lat: $lat
+    lng: $lng
+  }) {
+    uuid
+    name
+    description
+    severity
+    lat
+    lng
+    createdAt
+    updatedAt
+  }
+}`;
+
 export {GET_EVENTS, GET_EVENT_BY_ID}

@@ -7,6 +7,7 @@ import { darkWhiteColor } from "../../themes/colors";
 import { Button, View } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 
+import { HelpNeeded } from "../../pages/HelpNeeded";
 
 const Stack = createStackNavigator();
 
@@ -57,6 +58,12 @@ const HomeStackNavigator = () => {
                     fontWeight: 'bold',
                 },
                 headerLeft: () => <FontAwesome name="angle-left" style={{ marginLeft: 24 }} size={24} color="black" />,
+            }} />
+            <Stack.Screen name="HelpNeeded" component={HelpNeeded} options={{
+                title: 'Potrzebuję Pomocy',
+                headerStyle: {
+                    backgroundColor: darkWhiteColor,
+                },
             }} />
         </Stack.Navigator>
     );
