@@ -5,6 +5,7 @@ import themeStyles from "../themes/themes";
 import { useQuery } from "@apollo/client";
 import { GET_EVENTS } from "../api/Queries";
 import LightButton from "../components/buttons/LightButton";
+import * as Notifications from 'expo-notifications';
 
 const HomePage = ({ navigation }: any) => {
   const { loading, error, data } = useQuery<EventResponse>(GET_EVENTS);
@@ -18,7 +19,8 @@ const HomePage = ({ navigation }: any) => {
       {data!.events.map((item, index) => (
         <View key={index} style={{ ...themeStyles.card, marginVertical: 5 }}>
           <TouchableOpacity key={index} style={{ flex: 1, flexDirection: 'row' }} onPress={() => {
-            navigation.navigate('HelpDetails', { name: item });
+            // navigation.navigate('HelpDetails', { name: item });
+            schedulePushNotification();
           }}>
             <View style={{ ...themeStyles.dot }}></View>
             <View style={{ ...styles.item, width: '84%' }}>
@@ -54,5 +56,16 @@ const styles = StyleSheet.create({
 
   }
 });
+
+async function schedulePushNotification() {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: 'Ktoś w pobliżu potrzebuje pomocy!',
+      body: `Zgłoszenie: Pomoc przy powodzi`,
+      badge: 0
+    },
+    trigger: { seconds: 2 },
+  });
+}
 
 export default HomePage;
