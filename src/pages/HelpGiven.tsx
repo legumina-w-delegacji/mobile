@@ -44,6 +44,11 @@ const HelpGiven = ({ navigation }: any) => {
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 18,
+    },
+    row: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center'
     }
 });
 

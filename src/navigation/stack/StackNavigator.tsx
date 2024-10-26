@@ -14,6 +14,7 @@ const Stack = createStackNavigator();
 
 const headerStyle = {
     backgroundColor: darkWhiteColor,
+    shadowColor: 'transparent',
     height: 91,
 }
 
