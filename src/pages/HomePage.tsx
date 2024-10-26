@@ -13,7 +13,7 @@ const HomePage = ({ navigation }: any) => {
   if (!data || error) console.log(error);
 
   return <View>
-    <ScrollView style={{ padding: 12 }}>
+    <ScrollView style={{ padding: 20 }}>
       {data!.events.map((item, index) => (
         <View key={index} style={{ ...themeStyles.card, marginVertical: 5 }}>
           <TouchableOpacity key={index} style={{ flex: 1, flexDirection: 'row' }} onPress={() => {
