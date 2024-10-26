@@ -10,14 +10,14 @@ interface MapProps {
     postTrigger?: any;
 }
 
-const Map = ({interactivityEnabled, mapMarkerFollowUp, initialLocationTrigger, postTrigger} : MapProps) => {
+const Map = ({ interactivityEnabled, mapMarkerFollowUp, initialLocationTrigger, postTrigger }: MapProps) => {
     const [currentLocation, setCurrentLocation]: any = useState(null);
     const [markerLocation, setMarkerLocation]: any = useState(null);
     const [initialRegion, setInitialRegion]: any = useState(null);
     var mapRef: any = null;
 
     const onRegionChange = (region: any) => {
-        if(mapMarkerFollowUp) {
+        if (mapMarkerFollowUp) {
             setMarkerLocation({
                 latitude: region.latitude,
                 longitude: region.longitude,
@@ -45,14 +45,14 @@ const Map = ({interactivityEnabled, mapMarkerFollowUp, initialLocationTrigger, p
                 longitudeDelta: 0.005,
             });
 
-           setMarkerLocation(location.coords);
+            setMarkerLocation(location.coords);
         };
 
         getLocation();
     }, []);
 
-    useEffect(()=>{
-        if(initialLocationTrigger) {
+    useEffect(() => {
+        if (initialLocationTrigger) {
             setMarkerLocation(currentLocation);
             mapRef.animateToRegion(currentLocation, 1000)
             postTrigger();
@@ -64,15 +64,15 @@ const Map = ({interactivityEnabled, mapMarkerFollowUp, initialLocationTrigger, p
         <View style={styles.container}>
             {initialRegion && (
                 <MapView style={styles.map}
-                        ref={(map) => { mapRef = map; }}
-                        initialRegion={initialRegion}
-                        zoomTapEnabled={interactivityEnabled}
-                        zoomControlEnabled={interactivityEnabled}
-                        showsBuildings={interactivityEnabled}
-                        onRegionChange={onRegionChange}
-                        pitchEnabled={interactivityEnabled}
-                        pointerEvents= {interactivityEnabled ? undefined : "none"}
-                        rotateEnabled={interactivityEnabled}
+                    ref={(map) => { mapRef = map; }}
+                    initialRegion={initialRegion}
+                    zoomTapEnabled={interactivityEnabled}
+                    zoomControlEnabled={interactivityEnabled}
+                    showsBuildings={interactivityEnabled}
+                    onRegionChange={onRegionChange}
+                    pitchEnabled={interactivityEnabled}
+                    pointerEvents={interactivityEnabled ? undefined : "none"}
+                    rotateEnabled={interactivityEnabled}
                 >
                     {markerLocation && (
                         <Marker

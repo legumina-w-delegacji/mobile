@@ -45,4 +45,4 @@ mutation CreateEvent($description: String!, $lat: Float!, $lng: Float!) {
   }
 }`;
 
-export {GET_EVENTS, GET_EVENT_BY_ID}
+export { GET_EVENTS, GET_EVENT_BY_ID, CREATE_EVENT }
