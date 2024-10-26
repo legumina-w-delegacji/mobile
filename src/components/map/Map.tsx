@@ -8,9 +8,10 @@ interface MapProps {
     mapMarkerFollowUp?: boolean;
     initialLocationTrigger?: boolean;
     postTrigger?: any;
+    updateLatLng?: any;
 }
 
-const Map = ({ interactivityEnabled, mapMarkerFollowUp, initialLocationTrigger, postTrigger }: MapProps) => {
+const Map = ({ interactivityEnabled, mapMarkerFollowUp, initialLocationTrigger, postTrigger, updateLatLng }: MapProps) => {
     const [currentLocation, setCurrentLocation]: any = useState(null);
     const [markerLocation, setMarkerLocation]: any = useState(null);
     const [initialRegion, setInitialRegion]: any = useState(null);
@@ -24,6 +25,7 @@ const Map = ({ interactivityEnabled, mapMarkerFollowUp, initialLocationTrigger, 
                 latitudeDelta: 0.005,
                 longitudeDelta: 0.005,
             });
+            updateLatLng(region);
         }
     }
 
