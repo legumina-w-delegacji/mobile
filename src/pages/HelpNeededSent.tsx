@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/client";
 import DarkButton from "../components/buttons/DarkButton";
 import LightButton from "../components/buttons/LightButton";
 
-const HelpNeededSent = () => {
+const HelpNeededSent = ({navigation}: any) => {
   return (<ScrollView style={styles.container}>
     <View style={themeStyles.card}>
       <Text>
@@ -22,5 +22,11 @@ const HelpNeededSent = () => {
   </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 18,
+},
+});
 
 export { HelpNeededSent }

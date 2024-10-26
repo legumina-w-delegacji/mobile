@@ -26,6 +26,7 @@ const HomeStackNavigator = () => {
                 headerStyle: headerStyle,
                 headerTitleStyle: {
                     padding: 0,
+                    height: 20,
                     fontSize: 20,
                     fontWeight: 'bold',
                 },

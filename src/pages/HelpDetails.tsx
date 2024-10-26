@@ -13,9 +13,7 @@ const HelpDetails = ({ route, navigation }: any) => {
 
     if (loading) return <ActivityIndicator />;
 
-    if (!data || error) console.log(error);
-
-    console.log(`fetching${data?.event.name}`);
+    if (!data || error) return <></>
 
     return <ScrollView style={styles.container}>
         <View style={themeStyles.card}>

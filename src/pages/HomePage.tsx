@@ -11,10 +11,10 @@ const HomePage = ({ navigation }: any) => {
 
   if (loading) return <ActivityIndicator />;
 
-  if (!data || error) console.log(error);
+  if (error) return <></>
 
   return <View>
-    <ScrollView style={{ padding: 20 }}>
+    <ScrollView style={{ padding: 20}}>
       {data!.events.map((item, index) => (
         <View key={index} style={{ ...themeStyles.card, marginVertical: 5 }}>
           <TouchableOpacity key={index} style={{ flex: 1, flexDirection: 'row' }} onPress={() => {
@@ -39,6 +39,8 @@ const HomePage = ({ navigation }: any) => {
       <LightButton title="Potrzebuje pomocy" onPress={() => {
         navigation.navigate('HelpNeeded');
       }} />
+          <View style={{height: 30}}/>
+
     </ScrollView >
   </View >
 };

@@ -1,17 +1,25 @@
-import { Button, ScrollView, StyleSheet, Text, TextInput, View, ActivityIndicator } from "react-native";
+import { Button, ScrollView, StyleSheet, Text, TextInput, View, ActivityIndicator, TouchableOpacity } from "react-native";
 import themeStyles from "../themes/themes";
 import Map from "../components/map/Map";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CREATE_EVENT } from "../api/Queries";
 import { useMutation } from "@apollo/client";
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import DarkButton from "../components/buttons/DarkButton";
 import LightButton from "../components/buttons/LightButton";
 
 
 const HelpNeeded = ({ navigation }: any) => {
     const [createEvent, { data, loading, error }] = useMutation(CREATE_EVENT);
+    const [region, setRegion]: any = useState();
     const [initialLocationTrigger, setInitialLocationTrigger] = useState(false);
 
+    
+    useEffect(() => {
+        if (data) navigation.navigate('HelpNeededSent')
+        console.log(data);
+    }, [data]);
+    
     const handleInitialLocationTrigger = () => {
         setInitialLocationTrigger(!initialLocationTrigger);
     };
@@ -19,32 +27,32 @@ const HelpNeeded = ({ navigation }: any) => {
     const [description, setDescription] = useState('');
 
     const handleCreateEvent = () => {
-        const lat = 0;
-        const lng = 0;
-        createEvent({ variables: { lat: lat, lng: lng, description: description } })
+        createEvent({ variables: { lat: region.latitude, lng: region.longitude, description: description } })
     }
 
     if (loading) return <ActivityIndicator />;
 
-    if (!data || error) console.log(error);
+    if (error) return <></>;
 
-    if (data) navigation.navigate('HelpNeededSent')
 
     return <ScrollView style={styles.container}>
         <View style={themeStyles.card}>
             <Text style={styles.labelArea}>Opis zgłoszenia</Text>
             <View style={styles.inputArea}>
-                <TextInput defaultValue={description} onChangeText={val => setDescription(val)} placeholder="Opis zgłoszenia..." />
+                <TextInput defaultValue={description} onChangeText={val => setDescription(val)} placeholder="Opis zgłoszenia..." multiline={true}/>
             </View>
             <View style={{ height: 15 }} />
             <Text style={styles.labelArea}>Opis zgłoszenia</Text>
             <View style={styles.mapInputArea}>
                 <View style={styles.mapSearchContainer}>
-                    <TextInput style={styles.searchInput} placeholder="Opis zgłoszenia..." />
-                    <Button title="N" onPress={() => handleInitialLocationTrigger()} />
+                    <TextInput style={styles.searchInput} placeholder="Adres..." textBreakStrategy="highQuality"/>
+                    <TouchableOpacity onPress={() => handleInitialLocationTrigger()}>
+                        <FontAwesome6 name="location-crosshairs" size={20} color="black" />
+                    </TouchableOpacity>
                 </View>
                 <Map interactivityEnabled={true}
                     mapMarkerFollowUp={true}
+                    updateLatLng={setRegion}
                     initialLocationTrigger={initialLocationTrigger}
                     postTrigger={handleInitialLocationTrigger} />
             </View>
