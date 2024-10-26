@@ -21,27 +21,78 @@ const MyHelpRequests = ({ navigation }: any) => {
     red,
   ]
 
-  return <View style={{ marginTop: 20 }}>
+  console.log(data?.events.length);
+
+  return <View style={{ paddingTop: 8 }}>
     <ScrollView>
-      {data!.events.map((item, index) => (
-        <View key={index} style={{ ...themeStyles.card, marginVertical: 5, marginHorizontal: 20 }}>
-          <TouchableOpacity key={index} style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }} onPress={() => {
-            navigation.navigate('MyHelpRequestDetails', { id: item.uuid });
-          }}>
-            <View style={{ ...themeStyles.dot, backgroundColor: dotsColorsArr[item.severity - 1] }}></View>
-            <View style={{ ...styles.item, width: '80%' }}>
-              <Text style={{ fontSize: 18, fontWeight: 'bold' }} key={index}>{item.name}</Text>
-              <View style={{ marginTop: 4, flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={{ fontSize: 10, color: gray }}>5 km od ciebie</Text>
-                <Text style={{ fontSize: 10, color: gray }}>5 godzin temu</Text>
+      <View>
+        <Text style={{ ...themeStyles.detailsItemLabel, marginHorizontal: 20 }}>Aktywne zgłoszenia</Text>
+        {data!.events.slice(0, 3).map((item, index) => (
+          <View key={index} style={{ ...themeStyles.card, marginVertical: 5, marginHorizontal: 20 }}>
+            <TouchableOpacity key={index} style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }} onPress={() => {
+              navigation.navigate('MyHelpRequestDetails', { id: item.uuid });
+            }}>
+              <View style={{ ...themeStyles.dot, backgroundColor: dotsColorsArr[item.severity - 1] }}></View>
+              <View style={{ ...styles.item, width: '80%' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold' }} key={index}>{item.name}</Text>
+                <View style={{ marginTop: 4, flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+                  <Text style={{ fontSize: 10, color: gray }}>5 km od ciebie</Text>
+                  <Text style={{ fontSize: 10, color: gray }}>5 godzin temu</Text>
+                </View>
               </View>
-            </View>
-            <View style={{ marginLeft: 'auto', }}>
-              <FontAwesome name="angle-right" size={32} color="gray" />
-            </View>
-          </TouchableOpacity>
-        </View>
-      ))}
+              <View style={{ marginLeft: 'auto', }}>
+                <FontAwesome name="angle-right" size={32} color="gray" />
+              </View>
+            </TouchableOpacity>
+          </View>
+        ))}
+      </View>
+
+      <View style={{ marginTop: 32 }}>
+        <Text style={{ ...themeStyles.detailsItemLabel, marginHorizontal: 20 }}>Oczekujące</Text>
+        {data!.events.slice(0, 3).map((item, index) => (
+          <View key={index} style={{ ...themeStyles.card, marginVertical: 5, marginHorizontal: 20 }}>
+            <TouchableOpacity key={index} style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }} onPress={() => {
+              navigation.navigate('MyHelpDetailsPending', { id: item.uuid });
+            }}>
+              <View style={{ ...themeStyles.dot, backgroundColor: gray }}></View>
+              <View style={{ ...styles.item, width: '80%' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold' }} key={index}>{item.name}</Text>
+                <View style={{ marginTop: 4, flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+                  <Text style={{ fontSize: 10, color: gray }}>5 km od ciebie</Text>
+                  <Text style={{ fontSize: 10, color: gray }}>5 godzin temu</Text>
+                </View>
+              </View>
+              <View style={{ marginLeft: 'auto', }}>
+                <FontAwesome name="angle-right" size={32} color="gray" />
+              </View>
+            </TouchableOpacity>
+          </View>
+        ))}
+      </View>
+
+      <View style={{ marginTop: 32 }}>
+        <Text style={{ ...themeStyles.detailsItemLabel, marginHorizontal: 20 }}>Odrzucone</Text>
+        {data!.events.slice(0, 3).map((item, index) => (
+          <View key={index} style={{ ...themeStyles.card, marginVertical: 5, marginHorizontal: 20 }}>
+            <TouchableOpacity key={index} style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }} onPress={() => {
+              navigation.navigate('MyHelpRequestDetails', { id: item.uuid });
+            }}>
+              <View style={{ ...themeStyles.dot, backgroundColor: gray }}></View>
+              <View style={{ ...styles.item, width: '80%' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold' }} key={index}>{item.name}</Text>
+                <View style={{ marginTop: 4, flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+                  <Text style={{ fontSize: 10, color: gray }}>5 km od ciebie</Text>
+                  <Text style={{ fontSize: 10, color: gray }}>5 godzin temu</Text>
+                </View>
+              </View>
+              <View style={{ marginLeft: 'auto', }}>
+                <FontAwesome name="angle-right" size={32} color="gray" />
+              </View>
+            </TouchableOpacity>
+          </View>
+        ))}
+      </View>
     </ScrollView>
   </View>
 }

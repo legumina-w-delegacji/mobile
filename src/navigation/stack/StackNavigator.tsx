@@ -11,6 +11,7 @@ import { HelpNeeded } from "../../pages/HelpNeeded";
 import { HelpNeededSent } from "../../pages/HelpNeededSent";
 import { MyHelpRequests } from "../../pages/MyHelpRequests";
 import { MyHelpRequestDetails } from "../../pages/MyHelpRequestDetails";
+import { MyHelpDetailsPending } from "../../pages/MyHelpDetailsPending";
 
 const Stack = createStackNavigator();
 
@@ -109,6 +110,19 @@ const HomeStackNavigator = () => {
             })} />
             <Stack.Screen name="MyHelpRequestDetails" component={MyHelpRequestDetails} options={({ navigation, route }) => ({
                 title: 'Moje Zgłoszenia',
+                headerStyle: headerStyle,
+                headerTitleStyle: {
+                    padding: 0,
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                },
+                headerTitleAlign: 'center',
+                headerLeft: () => <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <FontAwesome name="angle-left" style={{ marginLeft: 24 }} size={24} color="black" />
+                </TouchableOpacity>,
+            })} />
+            <Stack.Screen name="MyHelpDetailsPending" component={MyHelpDetailsPending} options={({ navigation, route }) => ({
+                title: 'Informacje o zgłoszeniu',
                 headerStyle: headerStyle,
                 headerTitleStyle: {
                     padding: 0,
