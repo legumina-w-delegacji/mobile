@@ -17,7 +17,6 @@ const HelpNeeded = ({ navigation }: any) => {
 
     useEffect(() => {
         if (data) navigation.navigate('HelpNeededSent')
-        console.log(data);
     }, [data]);
 
     const handleInitialLocationTrigger = () => {

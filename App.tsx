@@ -7,10 +7,12 @@ import { ApolloProvider } from '@apollo/client';
 
 import { client } from './src/api/ApolloClient';
 import { onMessage } from 'firebase/messaging';
-import { messaging } from './src/fb/firebase';
+import { database } from './src/fb/firebase';
 import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device';
 import Constants from 'expo-constants';
+import { collection, onSnapshot } from 'firebase/firestore';
+import { schedulePushNotification } from './src/api/Firestore';
 
 
 Notifications.setNotificationHandler({
@@ -21,9 +23,15 @@ Notifications.setNotificationHandler({
   }),
 });
 
+// @ts-ignore
+window.addEventListener = (x: any) => x;
+
+const eventsCollection = collection(database, 'events');
+    onSnapshot(eventsCollection, snapshot => {
+      schedulePushNotification();
+  });
+  
 export default function App() {
-
-
   const [expoPushToken, setExpoPushToken] = useState('');
   const [channels, setChannels] = useState<Notifications.NotificationChannel[]>([]);
   const [notification, setNotification] = useState<Notifications.Notification | undefined>(
@@ -38,6 +46,7 @@ export default function App() {
     if (Platform.OS === 'android') {
       Notifications.getNotificationChannelsAsync().then(value => setChannels(value ?? []));
     }
+
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
       setNotification(notification);
     });
@@ -85,18 +94,13 @@ async function registerForPushNotificationsAsync() {
       console.log('Failed to get push token for push notification!');
       return;
     }
-    // Learn more about projectId:
-    // https://docs.expo.dev/push-notifications/push-notifications-setup/#configure-projectid
-    // EAS projectId is used here.
+
     try {
       const projectId = '50134c1f-928f-4845-95b2-e57ec06d1e8b';
       if (!projectId) {
         throw new Error('Project ID not found');
       }
       token = (
-        // await Notifications.getExpoPushTokenAsync({
-        //   projectId,
-        // })
         await Notifications.getDevicePushTokenAsync()
       ).data;
       console.log(token);
