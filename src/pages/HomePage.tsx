@@ -4,6 +4,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome'
 import themeStyles from "../themes/themes";
 import { useQuery } from "@apollo/client";
 import { GET_EVENTS } from "../api/Queries";
+import LightButton from "../components/buttons/LightButton";
 
 const HomePage = ({ navigation }: any) => {
   const { loading, error, data } = useQuery<EventResponse>(GET_EVENTS);
@@ -35,8 +36,8 @@ const HomePage = ({ navigation }: any) => {
       ))}
 
       <Text>Jeśli jesteś osobą potrzebabnouwdi8hawdeajw90ującą pmocy mozesz sgloscić problem</Text>
-      <Button title="Potrzebuje pomocy" onPress={() => {
-        console.log('Potrzebuje pomocy');
+      <LightButton title="Potrzebuje pomocy" onPress={() => {
+        navigation.navigate('HelpNeeded');
       }} />
     </ScrollView >
   </View >
